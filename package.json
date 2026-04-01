@@ -1,7 +1,22 @@
 {
 	"name": "okerr",
+	"version": "0.0.1",
+	"author": "Rodrigo Santos <hello@rodrigosantos.dev> (https://github.com/rodrigosdev)",
+	"description": "A lightweight type-safe Result Library for TypeScript with explicit Ok/Err handling",
+	"license": "MIT",
+	"keywords": [
+		"result",
+		"generator",
+		"functional",
+		"error-handling"
+	],
 	"module": "index.ts",
 	"type": "module",
+	"scripts": {
+		"lint": "biome check",
+		"format": "biome format --write",
+		"typecheck": "tsc --noEmit"
+	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.10",
 		"@types/bun": "latest"

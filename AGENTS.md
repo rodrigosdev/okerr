@@ -1,4 +1,10 @@
-# Use Bun instead of Node.js, npm, pnpm, or vite.
+# AGENTS.md
+
+## Task Completion Requirements
+
+- All of `bun fmt`, `bun lint`, `bun typecheck`, `bun test` must pass before considering tasks completed.
+
+## Use Bun instead of Node.js, npm, pnpm, or vite.
 
 Default to using Bun instead of Node.js.
 
