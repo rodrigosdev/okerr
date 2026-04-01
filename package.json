@@ -10,6 +10,14 @@
 		"functional",
 		"error-handling"
 	],
+	"homepage": "https://github.com/rodrigosdev/okerr#readme",
+	"bugs": {
+		"url": "https://github.com/rodrigosdev/okerr/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rodrigosdev/okerr"
+	},
 	"module": "index.ts",
 	"type": "module",
 	"scripts": {
