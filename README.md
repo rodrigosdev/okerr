@@ -4,6 +4,8 @@ A lightweight type-safe Result Library for TypeScript with explicit Ok/Err handl
 
 Highly inspired by [better-result](https://github.com/dmmulroy/better-result) and [Effect](https://effect.website/). 
 
+## Install
+
 ## License
 
 [MIT](https://github.com/rodrigosdev/okerr?tab=MIT-1-ov-file)
