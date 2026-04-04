@@ -1,12 +1,28 @@
 # Okerr
 
+**npm:** [`@rodrigosdev/okerr`](https://www.npmjs.com/package/@rodrigosdev/okerr)
+
 A small, type-safe **Result** type for TypeScript: every outcome is either success (`ok`) or failure (`err`), so callers handle both paths explicitly instead of relying only on exceptions.
 
-Highly inspired by [better-result](https://github.com/dmmulroy/better-result) and [Effect](https://effect.website/).
+Inspired by [better-result](https://github.com/dmmulroy/better-result) and [Effect](https://effect.website/).
+
+## Requirements
+
+- TypeScript (this package ships `.d.ts`; use a recent TS release compatible with your project)
 
 ## Install
 
----
+```sh
+bun add @rodrigosdev/okerr
+```
+
+```sh
+npm install @rodrigosdev/okerr
+```
+
+```sh
+pnpm add @rodrigosdev/okerr
+```
 
 ## The `Result` shape
 
@@ -20,7 +36,13 @@ Branch on `result.ok` (or use `isOk` / `isErr` / `match`) so TypeScript narrows 
 ## Quick start
 
 ```ts
-import { err, fn, isOk, match, ok, orElse, value } from 'okerr';
+import {
+	type Result,
+	err,
+	isOk,
+	match,
+	ok,
+} from '@rodrigosdev/okerr';
 
 function parsePositive(s: string): Result<number, string> {
 	const n = Number(s);
@@ -38,7 +60,6 @@ if (isOk(r)) {
 	console.error(r.error); // string
 }
 
-// Or collapse to one expression:
 const doubled = match(r, {
 	ok: (n) => n * 2,
 	err: () => 0,
@@ -46,6 +67,8 @@ const doubled = match(r, {
 ```
 
 ## API
+
+All exports come from `@rodrigosdev/okerr`.
 
 ### `ok(value)` / `err(error)`
 
@@ -69,6 +92,8 @@ Returns the success value, or **throws** the stored error if the result is `err`
 Returns the success value, or `defaultValue` if the result is an error. Accepts either a `Result` or a `Promise<Result>` and always returns a `Promise` of the success type.
 
 ```ts
+import { err, ok, orElse } from '@rodrigosdev/okerr';
+
 await orElse(ok(1), 0); // 1
 await orElse(err('x'), 0); // 0
 await orElse(Promise.resolve(ok(2)), 0); // 2
@@ -79,6 +104,8 @@ await orElse(Promise.resolve(ok(2)), 0); // 2
 Runs exactly one arm and returns a single type `R`. Both callbacks are required, which keeps handling complete and helps inference.
 
 ```ts
+import { match, ok } from '@rodrigosdev/okerr';
+
 const out = match(ok(42), {
 	ok: (n) => n * 2,
 	err: () => 0,
@@ -92,6 +119,8 @@ Wraps a synchronous or async function so it **never throws**: successes become `
 The returned function is **async** and has the type `ResultFn<Args, T, Error>` (see `ResultFn` in the package typings).
 
 ```ts
+import { fn, match } from '@rodrigosdev/okerr';
+
 const divide = fn((a: number, b: number) => {
 	if (b === 0) throw new Error('division by zero');
 	return a / b;
@@ -119,6 +148,8 @@ const message = match(bad, {
 **Composable pipeline with `fn` + `match`:**
 
 ```ts
+import { fn, match } from '@rodrigosdev/okerr';
+
 const parse = fn((s: string) => {
 	const n = Number(s);
 	if (Number.isNaN(n)) throw new Error('not a number');
@@ -133,6 +164,10 @@ const doubled = match(first, {
 ```
 
 **Interop with code that throws:** wrap boundaries with `fn`, keep the rest of your code on `Result` + `match` / guards.
+
+## Repository
+
+Source and issues: [github.com/rodrigosdev/okerr](https://github.com/rodrigosdev/okerr)
 
 ## License
 
