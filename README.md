@@ -16,14 +16,6 @@ Inspired by [better-result](https://github.com/dmmulroy/better-result) and [Effe
 bun add @rodrigosdev/okerr
 ```
 
-```sh
-npm install @rodrigosdev/okerr
-```
-
-```sh
-pnpm add @rodrigosdev/okerr
-```
-
 ## The `Result` shape
 
 A `Result<T, E>` is a discriminated union:
