@@ -21,8 +21,9 @@
 	"type": "module",
 	"scripts": {
 		"lint": "biome check",
-		"format": "biome format --write",
-		"typecheck": "tsc --noEmit"
+		"fmt": "biome format --write",
+		"typecheck": "tsc --noEmit",
+		"test": "bun test"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.10",
