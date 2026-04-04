@@ -1,6 +1,6 @@
 {
 	"name": "@rodrigosdev/okerr",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"author": "Rodrigo Santos <hello@rodrigosantos.dev> (https://github.com/rodrigosdev)",
 	"description": "A lightweight type-safe Result Library for TypeScript with explicit Ok/Err handling",
 	"license": "MIT",
