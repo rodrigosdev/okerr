@@ -84,6 +84,22 @@ export function value<T, E>(result: Result<T, E>): T {
 }
 
 /**
+ * Extracts the success value from a {@link Result}, or returns a default when
+ * the outcome is an error. If `p` is a promise, it is awaited first.
+ *
+ * @param p - A `Result` or a `Promise` that resolves to one.
+ * @param d - The default value when the result is an error.
+ * @returns A promise that resolves to the success value or to `d`.
+ */
+export async function orElse<V, E>(
+	p: Promise<Result<V, E>> | Result<V, E>,
+	d: V,
+): Promise<V> {
+	const result = await p;
+	return result.ok ? result.value : d;
+}
+
+/**
  * Handles a {@link Result} by calling exactly one of two functions: `ok` when the
  * result is successful, or `err` when it is a failure. Both arms are required, so
  * every outcome is covered and TypeScript infers a single return type `R`.
